@@ -2,10 +2,6 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js"
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { z } from "zod"
-import dotenv from "dotenv"
-
-// Load environment variables from .env file
-dotenv.config()
 
 const server = new McpServer({
   name: "MCP Server Boilerplate",
@@ -51,9 +47,9 @@ server.prompt(
   })
 )
 
-server.tool("getApiKey", "Get the API key", {}, async ({}) => ({
-  content: [{ type: "text", text: process.env.API_KEY || "API_KEY environment variable not set" }],
-}))
+// server.tool("getApiKey", "Get the API key", {}, async ({}) => ({
+//   content: [{ type: "text", text: process.env.API_KEY || "API_KEY environment variable not set" }],
+// }))
 
 server.tool("checkWeatherApiKey", "Check if weather API key is loaded", {}, async ({}) => {
   const apiKey = process.env.API_KEY_WEATHER;
